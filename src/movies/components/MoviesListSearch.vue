@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import "v-calendar/dist/style.css";
 import { DatePicker } from "v-calendar";
-import { ref } from "vue";
+
+import useSearch from "../composables/useSearch";
 
 import { Search } from "../types";
 
@@ -9,9 +10,9 @@ type IEmits = {
   (event: "search", dateRange: Search | undefined): void;
 };
 
-const searchDates = ref<Search>();
-
 const emit = defineEmits<IEmits>();
+
+const { clearSearch, searchDates } = useSearch();
 </script>
 
 <template>
@@ -35,7 +36,7 @@ const emit = defineEmits<IEmits>();
             <button
               class="absolute top-0 right-2"
               v-if="searchDates"
-              @click="searchDates = undefined"
+              @click="clearSearch"
             >
               X
             </button>

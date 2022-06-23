@@ -8,13 +8,15 @@ import type { Search } from "../types";
 
 const RESULTS_PER_PAGE = 20;
 
+const pageNumber = ref(1);
+const searchFilter = ref<Search>();
+
 const useMovies = () => {
-  const pageNumber = ref(1);
   const totalPages = ref(1);
   const totalResults = ref(0);
 
   const { call, error, isLoading, result } = useQuery(
-    (search?: Search) => getMovies(pageNumber.value, search),
+    () => getMovies(pageNumber.value, searchFilter.value),
     {
       immediate: true,
 
@@ -53,8 +55,9 @@ const useMovies = () => {
 
   const searchMovies = (searchDates: Search | undefined) => {
     pageNumber.value = 1;
+    searchFilter.value = searchDates;
 
-    call(searchDates);
+    call();
   };
 
   return {

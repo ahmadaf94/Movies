@@ -3,3 +3,4 @@ cypress/plugins
 cypress/support
 .vscode
 .DS_STORE
+dist
