@@ -1,6 +1,6 @@
 import { ref } from "vue";
 
-import { Search } from "../types";
+import type { Search } from "../types";
 
 const searchDates = ref<Search>();
 

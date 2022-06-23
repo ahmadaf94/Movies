@@ -4,7 +4,7 @@ import { DatePicker } from "v-calendar";
 
 import useSearch from "../composables/useSearch";
 
-import { Search } from "../types";
+import type { Search } from "../types";
 
 type IEmits = {
   (event: "search", dateRange: Search | undefined): void;
